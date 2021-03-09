@@ -18,4 +18,4 @@ The Workday scheduler shows the current day at the top of the screen using Momen
 <hr />
 <img src="./assets/images/add-event.png">
 <hr />
-<img src="./assets/images/view-event.png">
+<img src="./assets/images/see-event.png">

@@ -2,85 +2,115 @@ $(document).ready(function () {
 //moment variables    
 var currentDay = document.querySelector('#currentDay');
 currentDay.textContent = moment().format("dddd, MMMM Do YYYY");
-//time slots
-eightA = $("#slot-8");
-nineA = $("#slot-9");
-tenA = $("#slot-10");
-elevenA = $("#slot-11");
-noon = $("#slot-12");
-oneP = $("#slot-1");
-twoP = $("#slot-2");
-threeP = $("#slot-3");
-fourP = $("#slot-4");
-fiveP = $("#slot-5");
-    
-var timeSlotsArr = [eightA, nineA, tenA, elevenA, noon, oneP, twoP, threeP, fourP, fiveP];
-//saved data
-var savedEight = localStorage.getItem ('area8');
-var savedNine = localStorage.getItem ('area9');
-var savedTen = localStorage.getItem ('area10');
-var savedEleven = localStorage.getItem ('area11');
-var savedNoon = localStorage.getItem ('area12');
-var savedOne = localStorage.getItem ('area-1');
-var savedTwo = localStorage.getItem ('area-2');
-var savedThree = localStorage.getItem ('area-3');
-var savedFour = localStorage.getItem ('area-4');
-var savedFive = localStorage.getItem ('area-5');
 
-//compare timeslot to curren hour
+//add colors based on time
+var timeSlotsArr = $('textarea').get();
 for (i = 0; i < timeSlotsArr.length; i++) {
     let timeSlot = timeSlotsArr[i]; 
-    let timeSlotValue = (parseInt(timeSlot.text()))
-    console.log (timeSlotValue)
+    let timeSlotId = $(timeSlot).attr('id');
     let currentHour = moment().hours ();  
-    console.log (currentHour)
     //if timeslot earlier than now
-    if (timeSlotValue < currentHour ){
-        console.log (timeSlot + "less");
-        timeSlot.parent().addClass('past')
+    if (timeSlotId < currentHour ){
+        $(timeSlot).parent().addClass('past')
     }
     //if timeslot = now
-    else if (timeSlotValue === currentHour) {
-        console.log (timeSlot + "same");
-        timeSlot.parent().addClass('present')
+    else if (timeSlotId == currentHour) {
+        $(timeSlot).parent().addClass('present')
     }
     //if timeslot later than now
-        else {console.log (timeSlot + "more");
-        timeSlot.parent().addClass('future')
+        $(timeSlot).parent().addClass('future')
     }
   };
 
-  $('.saveBtn').click(function () {
-      savedEight = ($('#area-8').text());
-      localStorage.setItem ('area8', savedEight);
-      console.log (savedEight);
-      savedNine = ($('#area-9').text());
-      localStorage.setItem ('area9', savedNine);
-      console.log (savedNine);
-      savedTen = ($('#area-10').text());
-      localStorage.setItem ('area10', savedTen);
-      console.log (savedTen);
-      savedEleven = ($('#area-11').text());
-      localStorage.setItem ('area11', savedEleven);
-      console.log (savedEleven);
-      savedNoon = ($('#area-12').text());
-      localStorage.setItem ('area12', savedNoon);
-      console.log (savedNoon);
-      savedOne = ($('#area-1').text());
-      localStorage.setItem ('area-1', savedOne);
-      console.log (savedOne);
-      savedTwo = ($('#area-2').text());
-      localStorage.setItem ('area-2', savedTwo);
-      console.log (savedTwo);
-      savedThree = ($('#area-3').text());
-      localStorage.setItem ('area-3', savedThree);
-      console.log (savedThree);
-      savedFour = ($('#area-4').text());
-      localStorage.setItem ('area-4', savedFour);
-      console.log (savedFour);
-      savedFive = ($('#area-5').text());
-      localStorage.setItem ('area-5', savedFive);
-      console.log (savedFive);
-    });
-
+//save to local storage
+$('.btn8').click(function () {
+    //8am
+    var saveText = $('#8').val();
+    localStorage.setItem('8-text', saveText) 
 })
+$('.btn9').click(function () {
+    //9am
+    var saveText = $('#9').val();
+    localStorage.setItem('9-text', saveText) 
+})
+$('.btn10').click(function () {
+    //10am
+    var saveText = $('#10').val();
+    localStorage.setItem('10-text', saveText) 
+})
+$('.btn11').click(function () {
+    //11am
+    var saveText = $('#11').val();
+    localStorage.setItem('11-text', saveText) 
+})
+$('.btn12').click(function () {
+    //12pm
+    var saveText = $('#12').val();
+    localStorage.setItem('12-text', saveText) 
+})
+$('.btn13').click(function () {
+    //1pm
+    var saveText = $('#13').val();
+    localStorage.setItem('13-text', saveText) 
+})
+$('.btn14').click(function () {
+    //2pm
+    var saveText = $('#14').val();
+    localStorage.setItem('14-text', saveText) 
+})
+$('.btn15').click(function () {
+    //3pm
+     var saveText = $('#15').val();
+        localStorage.setItem('15-text', saveText) 
+})
+$('.btn16').click(function () {
+    //4pm
+    var saveText = $('#16').val();
+    localStorage.setItem('16-text', saveText) 
+})
+$('.btn17').click(function () {
+    //5pm
+    var saveText = $('#17').val();
+    localStorage.setItem('17-text', saveText) 
+}
+)
+
+//get local storage
+function getItems () {
+    //8am
+    eighText = localStorage.getItem('8-text');
+    $('#8').text(eighText);
+    //9am
+    nineText = localStorage.getItem('9-text');
+    $('#9').text(nineText);
+    //10am
+    tenText = localStorage.getItem('10-text');
+    $('#10').text(tenText);
+    //11am
+    elevenText = localStorage.getItem('11-text');
+    $('#11').text(elevenText);
+    //12pm
+    twelveText = localStorage.getItem('12-text');
+    $('#12').text(twelveText);
+    //1pm
+    oneText = localStorage.getItem('13-text');
+    $('#13').text(oneText);
+    //2pm
+    twoText = localStorage.getItem('14-text');
+    $('#14').text(twoText);
+    //3pm
+    threeText = localStorage.getItem('15-text');
+    $('#15').text(threeText);
+    //4pm
+    fourText = localStorage.getItem('16-text');
+    $('#16').text(fourText);
+    //5pm
+    fiveText = localStorage.getItem('17-text');
+    $('#17').text(fiveText);
+
+}
+
+getItems();
+
+}
+)

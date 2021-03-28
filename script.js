@@ -7,20 +7,22 @@ currentDay.textContent = moment().format("dddd, MMMM Do YYYY");
 var timeSlotsArr = $('textarea').get();
 for (i = 0; i < timeSlotsArr.length; i++) {
     let timeSlot = timeSlotsArr[i]; 
-    let timeSlotId = $(timeSlot).attr('id');
+    let timeSlotId = parseInt($(timeSlot).attr('id'));
     let currentHour = moment().hours ();  
     //if timeslot earlier than now
     if (timeSlotId < currentHour ){
-        $(timeSlot).parent().addClass('past')
+        $(timeSlot).parent().addClass('past');
     }
     //if timeslot = now
-    else if (timeSlotId == currentHour) {
-        $(timeSlot).parent().addClass('present')
+    else if (timeSlotId === currentHour) {
+        $(timeSlot).parent().addClass('present');
     }
     //if timeslot later than now
+    else {
         $(timeSlot).parent().addClass('future')
     }
-  };
+}
+
 
 //save to local storage
 $('.btn8').click(function () {
